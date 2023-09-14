@@ -60,24 +60,16 @@ function cart(db, printProducts){
 
     function addToCart(id, qty = 1){
         const itemFinded = cart.find(i => i.id ===id)
-
         if(itemFinded){
             if(validarStock(id, (qty + itemFinded.qty))){
-                itemFinded.qty +=qty
-                console.log('estoy en cero')
-                //notifyDOM.innerHTML = showItemsCount() 
+                itemFinded.qty +=qty 
             }else{
-                window.alert('Producto agotado')
-            }
-           
-        }else{
-            if(validarQtyDB()){
-                console.log('estoy en cero else')
-                cart.push({id, qty})
-            }
+                return window.alert('Producto agotado')
+            }                    
+        }else {
+            cart.push({id, qty})           
         }
         printCart()
-        //updateLocalStorage()
     }
     //elimina uno por uno del carro
     function removeFromCart(id, qty = 1){
@@ -89,13 +81,11 @@ function cart(db, printProducts){
             cart = cart.filter(i => i.id !== id)
         }
         printCart()
-        //updateLocalStorage()
     }
     //Elimina todo el producto del carro
     function deleteFromCart(id){
         cart = cart.filter(i => i.id !== id)
-        printCart() 
-        //updateLocalStorage()  
+        printCart()   
     }
     
 
@@ -122,11 +112,14 @@ function cart(db, printProducts){
             const productFind = db.find(p => p.id === item.id)
             productFind.quantity -= item.qty 
         }
-        window.alert('Gracias por su compra')
+        if(cart.length ===0){
+            window.alert('No hay productos que comprar')
+        }else{
+            window.alert('Gracias por su compra')
+        }
         cart = []
         printCart()
         printProducts()
-        //updateLocalStorage()
     }
 
     printCart()
@@ -135,8 +128,11 @@ function cart(db, printProducts){
     produsctsDOM.addEventListener('click', function(event){
         if(event.target.closest('.add--to--cart')){
             const id = +event.target.closest('.add--to--cart').dataset.id
-            console.log(id)
             addToCart(id)
+            if(!validarStock(id, 1)){
+                removeFromCart(id,1)
+                window.alert('producto agotado')
+            }
         }
 
     })
@@ -170,15 +166,12 @@ function cart(db, printProducts){
         produsctsDOM.addEventListener('click', function(event){
             if(event.target.closest('.add--to--cart')){
                 const id = +event.target.closest('.add--to--cart').dataset.id
-                const productoEncontrado = db.find(producto => producto.id === id)
-                return productoEncontrado.quantity >= 0
+                const productFind = db.find(p => p.id === id)
+                return productFind.quantity > 0 
             }
     
         })
     }
-   /* function updateLocalStorage() {
-        localStorage.setItem('cart', JSON.stringify(cart))
-      }*/
 
 }
 
