@@ -440,6 +440,7 @@ button{
 
 .footer__title{
     margin-bottom: var(--sp-0-75);
+    text-align: center;
 }
 
 .footer__social{
@@ -468,6 +469,47 @@ button{
 
 .footer__bottom{
     text-align: center;
+}
+.footer__top{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 5rem
+}
+
+.footer__right {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-1-5);
+}
+
+.footer__info-title{
+    color: var(--title-color);
+}
+.footer__link-text:hover{
+    color: red
+    
+}
+.footer__link-text{
+    color: var(--text-color);
+}
+.footer__right{
+    color: var(--text-color);
+}
+.footer__left{
+    padding-top: var(--sp-3);
+}
+.datos__personales-info {
+    color: var(--bg-color);
+    font-weight: bold;
+}
+.datos__personales{
+    
+        display: flex; /* Utilizamos flexbox para alinear vertical y horizontalmente */
+        justify-content: center; /* Centramos horizontalmente */
+        align-items: center; /* Centramos verticalmente */
+        height: 3rem; /* Ajustamos la altura al 100% del viewport para centrar en la pantalla */
+        text-align: center; /* Centramos el texto horizontalmente dentro del div */
+        background-color: var(--primary-color);
 }
 
 /*Cart*/
