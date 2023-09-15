@@ -49,6 +49,14 @@
     /*color btn cart, menu*/
     --color-btn-menuCart:hsl(0, 2%, 11%);
 
+    /*card border*/
+    --color-cart-border:hsl(0, 10%, 66%);
+
+    /*color border carrito tarjetas*/
+    --color-tarjetas-border:hsl(0, 38%, 89%);
+    --bg-tarjetas-container:hsl(0, 38%, 89%);
+    --title-color-cart:hsl(0, 0%, 10%);
+
 }
 
 @media(min-width:992px){
@@ -102,6 +110,9 @@ body.dark{
 --card-color: hsl(240, 21%, 27%);
 --color-btn-dark:#fff;
 --color-btn-menuCart:hsl(63, 100%, 50%); 
+--color-btn-cart:hsl(240, 21%, 17%);
+--color-cart-border:hsl(198, 100%, 50%);
+--title-color-cart:hsl(65, 97%, 49%);
 }
 
 a{
@@ -323,12 +334,8 @@ button{
     visibility: visible;
 }
 
-.btn__moon{
-
+.bx {
     color: var(--color-btn-dark);
-}
-
-.bxs-moon{
     font-size: 25px;
 }
 
@@ -350,6 +357,7 @@ button{
 .product{
     border-radius: 25px;
     overflow: hidden;
+    border: 2px solid var(--color-tarjetas-border);
 }
 
 .product__image{
@@ -377,38 +385,46 @@ button{
 
 .product__btn{
     position: absolute;
-    top: 0;
+    top: -22px;
     right: var(--sp-1-5);
     width: 45px;
     height: 45px;
     background-color: var(--color-btn-cart);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 50%;
-    transform: translateY(-50%);
+    
     display: grid;
     place-content: center;
     font-size: 1.25rem;
+    transition: all .3s ease;
 
 }
 
 .product__btn:hover{
     background-color: var(--primary-color);
-    color: var(--bg-color);
+    transform: scale(1.1);
+    
 }
 
 .product__price{
     grid-column: span 1;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: orange;
 }
 
 .product__stock{
     grid-column: span 2;
     justify-self: flex-end;
     font-size: var(--small-font);
+    color:cadetblue;
+    font-weight: bold;
 }
 
 .product__title{
     grid-column: span 3;
 }
+
 
 
 /*Footer*/
@@ -465,6 +481,8 @@ button{
     background-color: var(--bg-color);
     z-index: var(--z-fixed);
     transition:right .5s ease-in-out;
+    border-radius: 10px;
+    border: 3px solid var(--color-cart-border);
 }
 
 /*Show cart*/
@@ -516,6 +534,8 @@ button{
     grid-template-rows: 1fr;
     column-gap: var(--sp-1);
     margin-bottom: var(--sp-1);
+    border-radius: 5px;
+    border: 2px solid var(--color-tarjetas-border);
 }
 
 .article__image{
@@ -543,6 +563,8 @@ button{
 
 .article__title{
     grid-column: span 4;
+    font-size: 1rem;
+    color:var(--title-color-cart);
 }
 
 .article__quantify{
@@ -551,6 +573,9 @@ button{
     align-items: center;
     gap: var(--sp-1);
     justify-self: center;
+}
+.article__price{
+    color: orange;
 }
 
 .remove-from-cart{
@@ -582,9 +607,15 @@ button{
 
 .btn--buy{
     grid-column: span 4;
-    background-color: var(--title-color);
+    background-color: rgb(177, 3, 252);
     color: var(--bg-color);
     padding: var(--sp-1);
+    transition: all .3s ease;
+    border-radius: 20px;
+
+}
+.btn--buy:hover{
+    transform: scale(.9);
 
 }
 
@@ -626,4 +657,63 @@ button{
     .container{
         margin: 0 auto;
     }
+}
+
+/*mensaje del carrito*/
+.modal{
+    position: fixed;
+    bottom: 300px;
+    right: -100%;
+    top: 180px;
+    max-width: 375px;
+    width: 100%;
+    height: 100px;
+    background-color:coral;
+    z-index: var(--z-fixed);
+    transition: right .5s ease-in-out;
+    display: grid;
+    place-content: center;
+    border-radius: 10px;
+}
+
+.show--modal--cart{
+    right: 0;
+}
+
+
+.texto__modal{
+    font-size: 30px;
+    font-weight: var(--font_bold);
+}
+
+.container__gracias{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-content: center;
+}
+
+.modal--gracias{
+    max-width: 375px;
+    max-height: 400px;
+    background-color:rgb(47, 241, 255);
+    z-index: var(--z-fixed);
+    transition: right .5s ease-in-out;
+    display: grid;
+    place-content: center;
+    border-radius: 10px;
+}
+
+.show--modal--cart--hidden{
+    opacity: 0;
+    visibility: hidden;
+    transition: all .5s ease-in-out;
+}
+
+.texto__modal__gracias{
+    font-size: 30px;
+    font-weight: var(--font_bold);
+    text-align: center;
 }

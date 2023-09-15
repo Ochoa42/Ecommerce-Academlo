@@ -5,7 +5,6 @@ import products from './components/products.js'
 import getProducts from './helpers/getProducts.js'
 import cart from './components/cart.js'
 import darkMode from './components/darkMode.js'
-
 loader()
 
 //Mostrar menu del costado
@@ -21,3 +20,9 @@ const {db, printProducts} = products(await getProducts())
 cart(db, printProducts)
 
 darkMode()
+
+//text carrito vacio
+
+//showCartText()
+
+///ypooooooooooooooooooooooooo

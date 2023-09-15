@@ -28,13 +28,17 @@
                     <path fill="currentColor" d="M28.58,15.39H25.16L35.78,36H31.49L20.67,15.71,8.23,38.82H18.94l3-5.43h-3.4l-1.47,2.54h-4l2.69-5.09H25.85l4.28,8H40.67ZM17.23,28.21l3.57-6.6,3.57,6.6Z">
                     </path>
                   </svg>
-                  <button type="button" class=" btn__moon"><i class='bx bxs-moon' id="toggle"></i></button>
+                  <button type="button">
+                    <span>
+                        <i class='bx bxs-moon' id="toggle"></i>
+                    </span>
+                  </button>
+                  
             </a>
             <div class="nav__menu">
                 <button type="button" class="nav__btn btn--close">
                     <i class='bx bx-x'></i>
                 </button>
-
                 <ul class="nav__list">
                     <li class="nav__items">
                         <a href="#" class="nav__link">Inicio</a>
@@ -200,6 +204,19 @@
             </div>
         </div>
     </div>
+
+    <!--Mensaje si el carrito esta vacio-->
+    <div id="modal--container" class="modal"> 
+        <p class="texto__modal">Carrito Vacio</p>
+    </div>
+
+    <!--Gracias por su compra-->
+    <div class="container__gracias show--modal--cart--hidden">
+        <div class="modal--gracias"> 
+            <p class="texto__modal__gracias">Gracias por su compra!!. Academlo le desea un feliz dia</p>
+        </div>
+    </div>
+
     <!--Footer-->
     <footer class="footer__section">
         <div class="footer__container container">
